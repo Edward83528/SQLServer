@@ -1,0 +1,2 @@
+1.安裝2014版本檢查Microsoft.Net Framework3.5.1有沒有勾選(控制台->解除安裝程式->開啟或關閉window功能)
+2.安裝完 連線(localhost)\SQLEXPRESS
