@@ -1,30 +1,38 @@
--- Lab ½m²ß: View (ÀËµøªí)
+-- Lab ç·´ç¿’: View (æª¢è¦–è¡¨)
+/*
+å‰µé€ ä¸€å€‹view
+1.å®‰å…¨ 
+2.ç°¡åŒ– (viewåªå­˜ä½¿ç”¨è€…éœ€è¦è³‡æ–™)
+3.ä»‹é¢(å‰å°åªéœ€èªå¾—view,ä¹‹å¾Œè³‡æ–™åº«æ”¹ä¹Ÿæ²’é—œä¿‚)
+create view vwReOrderList as + select å­å¥	(ä½†ä¸èƒ½åŒ…æ‹¬order by,ç‚ºäº†çµ¦ä½¿ç”¨è€…è‡ªå·±æ±ºå®šè¦ä¸è¦ä½¿ç”¨)
+select * from vwReOrderList
+*/
 use Northwind
 go
 
--- «Ø¥ßÀËµøªí
+-- å»ºç«‹æª¢è¦–è¡¨
 create view vw_Test as
   select ProductID, ProductName, UnitPrice 
     from products 
     where UnitPrice < 50
 go
 
--- ³z¹LÀËµøªí¦s¨ú¸ê®Æªí
+-- é€éæª¢è¦–è¡¨å­˜å–è³‡æ–™è¡¨
 select * from vw_Test  
 update vw_Test set UnitPrice = 20 where ProductID = 1
 go
 
--- ³z¹LÀËµøªí¬İ¤£¨ìªº¸ê®Æ, ¤£¯à³z¹LÀËµøªí­×§ï
+-- é€éæª¢è¦–è¡¨çœ‹ä¸åˆ°çš„è³‡æ–™, ä¸èƒ½é€éæª¢è¦–è¡¨ä¿®æ”¹
 update vw_Test set UnitsInStock = 40 where ProductID = 1
 update vw_Test set UnitPrice = 40 where ProductID = 9
 go
 
 
--- ²Å¦XÀËµø¦s¨ú½d³òªº¸ê®Æ, ¹w³]¥i¥H§ï¦¨ÀËµøªí½d³ò¤§¥~.
+-- ç¬¦åˆæª¢è¦–å­˜å–ç¯„åœçš„è³‡æ–™, é è¨­å¯ä»¥æ”¹æˆæª¢è¦–è¡¨ç¯„åœä¹‹å¤–.
 update vw_Test set UnitPrice = 90 where ProductID = 1 
 
 
--- ¦A«Ø¤@­ÓÀËµøªí, ³o¦¸§Ú­Ì¥[¤W with check option
+-- å†å»ºä¸€å€‹æª¢è¦–è¡¨, é€™æ¬¡æˆ‘å€‘åŠ ä¸Š with check ä¹‹å¾Œæ›´æ–°è³‡æ–™åªèƒ½ç¬¦åˆå‰µé€ viewæ™‚çš„æ¢ä»¶ UnitPrice < 50)
 create view vw_TestC as
   select ProductID, ProductName, UnitPrice 
   from products 
@@ -32,15 +40,14 @@ create view vw_TestC as
 with check option
 go
 
--- ¦A¸Õ¤@¦¸
+-- å†è©¦ä¸€æ¬¡
 select * from vw_TestC
 update vw_TestC set UnitPrice = 20 where ProductID = 3
 update vw_TestC set UnitPrice = 60 where ProductID = 3  -- should be ERROR!!
 select * from vw_TestC
 
 
--- ÁÙ­ì Lab ½m²ßÀô¹Ò
+-- é‚„åŸ Lab ç·´ç¿’ç’°å¢ƒ
 drop view vw_Test
 drop view vw_TestC
 go
-
