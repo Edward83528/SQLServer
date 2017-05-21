@@ -1,26 +1,25 @@
 use Northwind
 GO
 
--- ©w¸q Cursor (½Ğ¯d·N Keyset ¿ï¶µ)
+-- å®šç¾© Cursor (è«‹ç•™æ„ Keyset é¸é …)
 DECLARE CursorLab CURSOR
 Keyset
 FOR 
 select * from Customers
   order by CustomerID
 
--- ¶}±Ò Cursor
+-- é–‹å•Ÿ Cursor
 OPEN CursorLab
 
--- ½ĞÀËµø²Ä¤@µ§ªº¤º®e
+-- è«‹æª¢è¦–ç¬¬ä¸€ç­†çš„å…§å®¹
 FETCH NEXT FROM CursorLab
 
--- ¦b¥t¤@­Ó Client ­×§ï¸ê®Æ
+-- åœ¨å¦ä¸€å€‹ Client ä¿®æ”¹è³‡æ–™
 -- update Customers set ContactName = 'Maria Anders2' where CustomerID = 'ALFKI'
 
--- ªğ¦^«e¤@µ§(­ì¥ıªº²Ä¤@µ§), ¸ê®Æ¤º®e¬O¤°»ò?
+-- è¿”å›å‰ä¸€ç­†(åŸå…ˆçš„ç¬¬ä¸€ç­†), è³‡æ–™å…§å®¹æ˜¯ä»€éº¼?(è¢«æ›´æ”¹éäº†)
 FETCH PRIOR FROM CursorLab
 
--- µ²§ô½m²ß
+-- çµæŸç·´ç¿’
 CLOSE CursorLab
 deallocate CursorLab
-
