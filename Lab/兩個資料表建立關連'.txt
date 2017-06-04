@@ -1,5 +1,0 @@
-
-  alter table 資料表2名稱 
-  add constraint 約束名稱
-  foreign key(關聯欄位名稱) references 資料表1名稱(關聯欄位名稱)
-  on update cascade on delete cascade
